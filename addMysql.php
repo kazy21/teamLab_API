@@ -7,7 +7,6 @@ if (isset($_GET["name"]) && isset($_GET["description"]) && isset($_GET["price"])
   if ($_GET["name"] == "" || $_GET["description"] == "" || $_GET["price"] == "") {
     echo "<p>全ての項目について入力して下さい。</p>"; exit;
   }
-  // データベースに挿入
   $sql = "INSERT INTO items (name, description, price)". "VALUES(?, ?, ?);";
   $stmt = $db->prepare($sql);
   $stmt->execute(array($_GET["name"],$_GET["description"],$_GET["price"]));

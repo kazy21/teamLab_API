@@ -1,16 +1,30 @@
 <?php
+  $script_name = $_SERVER["SCRIPT_NAME"];
   require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/head.php");
   require_once($_SERVER["DOCUMENT_ROOT"] . "/setMysql.php");
-?>
-
-<?php
-$sql = "SELECT * FROM items";
-$stmt = $db->query($sql);
 ?>
 
 <div class="container">
   <div class="row">
     <div class="col-12">
+<?php
+$name = isset($_GET["name"]) ? trim($_GET["name"]) : "";
+$name_html = htmlspecialchars($name);
+print <<< __FORM__
+  <form action="$script_name" method="GET">
+    商品名: <input type="text" name="name" value="$name_html" />
+    <input type="submit" value="検索" />
+  </form>
+__FORM__;
+
+print <<< EOT
+  <a href="$script_name">
+    <button style="text-decoration: none;">
+      取消
+    </button>
+  </a>
+EOT;
+?>
       <a href="addItems.php">
         <button style="text-decoration: none;">
           登録
@@ -23,16 +37,14 @@ $stmt = $db->query($sql);
   		</a>
     </div>
 <?php
-foreach ($stmt as $row) {
-  print<<<EOT
-    <div class="col-12 col-md-6 col-lg-4 product-info">
-      <div class="row">
-        <span class="col-12 name">{$row['name']}</span>
-        <span class="col-12 description">{$row['description']}</span><br>
-        <span class="col-12 price">{$row['price']}円</span>
-      </div>
-    </div>
-EOT;
+if ($name != "") {
+  $stmt = $db->prepare("SELECT * FROM items WHERE name=?");
+  $stmt->execute(array($name));
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/printMysql.php");
+} else {
+  $sql = "SELECT * FROM items";
+  $stmt = $db->query($sql);
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/printMysql.php");
 }
 ?>
   </div>
