@@ -16,6 +16,11 @@ $stmt = $db->query($sql);
           登録
         </button>
   		</a>
+      <a href="deleteItems.php">
+        <button style="text-decoration: none;">
+          削除
+        </button>
+  		</a>
     </div>
 <?php
 foreach ($stmt as $row) {
