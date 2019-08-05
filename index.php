@@ -13,33 +13,38 @@ $name_html = htmlspecialchars($name);
 print <<< __FORM__
   <form action="$script_name" method="GET">
     商品名: <input type="text" name="name" value="$name_html" />
-    <input type="submit" value="検索" />
+    <input class="btn btn-primary" type="submit" value="検索" />
   </form>
 __FORM__;
 
 print <<< EOT
   <a href="$script_name">
-    <button style="text-decoration: none;">
-      取消
+    <button class="btn btn-primary" style="text-decoration: none;">
+      リセット
     </button>
   </a>
 EOT;
 ?>
       <a href="addItems.php">
-        <button style="text-decoration: none;">
+        <button class="btn btn-primary" style="text-decoration: none;">
           登録
         </button>
   		</a>
       <a href="deleteItems.php">
-        <button style="text-decoration: none;">
+        <button class="btn btn-primary" style="text-decoration: none;">
           削除
+        </button>
+  		</a>
+      <a href="selectChangeItems.php">
+        <button class="btn btn-primary" style="text-decoration: none;">
+          変更
         </button>
   		</a>
     </div>
 <?php
 if ($name != "") {
-  $stmt = $db->prepare("SELECT * FROM items WHERE name=?");
-  $stmt->execute(array($name));
+  $stmt = $db->prepare("SELECT * FROM items WHERE name LIKE ? LIMIT 20");
+  $stmt->execute(array($name."%"));
   require_once($_SERVER["DOCUMENT_ROOT"] . "/printMysql.php");
 } else {
   $sql = "SELECT * FROM items";

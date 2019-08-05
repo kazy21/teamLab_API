@@ -9,7 +9,7 @@
       <div class="col-12">商品タイトル：<input type="text" name="name" /></div>
       <div class="col-12">説明文：<input type="text" name="description" /></div>
       <div class="col-12">価格：<input type="text" name="price" /></div>
-      <div class="col-12"><input type="submit" value="登録" /></div>
+      <div class="col-12"><input class="btn btn-primary" type="submit" value="登録" /></div>
     </form>
   </div>
 </div>

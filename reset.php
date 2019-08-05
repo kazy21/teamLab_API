@@ -9,6 +9,7 @@ try {
 // テーブルを作成する
 $create_query = <<< __SQL__
     CREATE TABLE IF NOT EXISTS items (
+        id          INTEGER,  /* 番号 */
         picture     BLOB,     /* 商品画像 */
         name        TEXT,     /* 商品タイトル */
         description TEXT,     /* 説明文 */
