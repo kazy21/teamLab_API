@@ -1,7 +1,6 @@
 <?php
-  $currentDir = dirname(__FILE__);
   require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/head.php");
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/set_mysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/setMysql.php");
 ?>
 
 <?php
@@ -11,6 +10,13 @@ $stmt = $db->query($sql);
 
 <div class="container">
   <div class="row">
+    <div class="col-12">
+      <a href="addItems.php">
+        <button style="text-decoration: none;">
+          登録
+        </button>
+  		</a>
+    </div>
 <?php
 foreach ($stmt as $row) {
   print<<<EOT
