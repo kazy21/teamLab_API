@@ -10,7 +10,7 @@ $stmt = $db->query($sql);
 
 <div class="container">
   <div class="row">
-    削除したい項目を選択してください。
+    <span class="col-12">削除したい項目を選択してください。</span>
 <?php
 foreach ($stmt as $row) {
   print<<<EOT
