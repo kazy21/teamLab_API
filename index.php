@@ -1,7 +1,7 @@
 <?php
   $script_name = $_SERVER["SCRIPT_NAME"];
   require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/head.php");
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/setMysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/setMysql.php");
 ?>
 
 <div class="container">
@@ -45,11 +45,11 @@ EOT;
 if ($name != "") {
   $stmt = $db->prepare("SELECT * FROM items WHERE name LIKE ? LIMIT 20");
   $stmt->execute(array($name."%"));
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/printMysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/printMysql.php");
 } else {
   $sql = "SELECT * FROM items";
   $stmt = $db->query($sql);
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/printMysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/printMysql.php");
 }
 ?>
   </div>

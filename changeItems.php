@@ -1,6 +1,6 @@
 <?php
   require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/head.php");
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/setMysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/setMysql.php");
 ?>
 
 <div class="container">
@@ -13,7 +13,7 @@
   $description_html = htmlspecialchars($description);
   $price_html = htmlspecialchars($price);
   print <<< EOT
-    <form action="changeMysql.php" method="GET">
+    <form action="/php/components/changeMysql.php" method="GET">
       <div class="col-12">商品タイトル：<input type="text" name="name" value="$name_html" /></div>
       <div class="col-12">説明文：<input type="text" name="description" value="$description_html" /></div>
       <div class="col-12">価格：<input type="text" name="price" value="$price_html" /></div>

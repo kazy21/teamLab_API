@@ -1,6 +1,6 @@
 <?php
   require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/head.php");
-  require_once($_SERVER["DOCUMENT_ROOT"] . "/setMysql.php");
+  require_once($_SERVER["DOCUMENT_ROOT"] . "/php/components/setMysql.php");
 ?>
 
 <?php
