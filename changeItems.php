@@ -9,11 +9,13 @@
   $name = isset($_GET["name"]) ? trim($_GET["name"]) : "";
   $description = isset($_GET["description"]) ? trim($_GET["description"]) : "";
   $price = isset($_GET["price"]) ? trim($_GET["price"]) : "";
+  $id = isset($_GET["id"]) ? trim($_GET["id"]) : "";
   $name_html = htmlspecialchars($name);
   $description_html = htmlspecialchars($description);
   $price_html = htmlspecialchars($price);
+  $id_html = htmlspecialchars($id);
   print <<< EOT
-    <form action="/php/components/changeMysql.php" method="POST" class="col-12">
+    <form action="/php/components/changeMysql.php?id=$id_html" method="POST" class="col-12">
       <div class="col-12">
         商品タイトル<br>
         <input type="text" name="name" value="$name_html" />

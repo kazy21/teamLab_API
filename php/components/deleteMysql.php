@@ -3,9 +3,8 @@
 ?>
 
 <?php
-  // データベースに挿入
-  $sql = "DELETE FROM items WHERE name = ?";
+  $sql = "DELETE FROM items WHERE id = ?";
   $stmt = $db->prepare($sql);
-  $stmt->execute(array($_GET["name"]));
+  $stmt->execute(array($_GET["id"]));
   header("location: /index.php"); exit; // リロードする
 ?>

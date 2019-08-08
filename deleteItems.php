@@ -15,7 +15,7 @@ $stmt = $db->query($sql);
 foreach ($stmt as $row) {
   print<<<EOT
     <div class="col-12 col-md-6 col-lg-4 product-info">
-      <a href="/php/components/deleteMysql.php?name={$row['name']}">
+      <a href="/php/components/deleteMysql.php?id={$row['id']}">
         <div class="row">
           <span class="col-12 name">{$row['name']}</span>
           <span class="col-12 description">{$row['description']}</span><br>
