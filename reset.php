@@ -48,3 +48,5 @@ while ($row = $stmt->fetch()) {
     $price = $row["price"];
     echo " $name ($description) → {$price}円\n";
 }
+
+header("location: /index.php"); exit; // リロードする

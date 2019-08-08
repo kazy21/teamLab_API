@@ -5,6 +5,6 @@
 <?php
   $sql = "UPDATE items SET name = ?, description = ?, price = ?";
   $stmt = $db->prepare($sql);
-  $stmt->execute(array($_GET["name"],$_GET["description"],$_GET["price"]));
+  $stmt->execute(array($_POST["name"], $_POST["description"], $_POST["price"]));
   header("location: /index.php"); exit; // リロードする
 ?>
