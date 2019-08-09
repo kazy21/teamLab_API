@@ -1,12 +1,12 @@
 <pre><?php
-// データベースへの接続
+//Connect Database
 try {
     $db = new PDO("mysql:host=localhost;dbname=items;charset=utf8","root","",array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 } catch (PDOException $e) {
     echo "Connect Error".$e->getMessage();
     exit;
 }
-// テーブルを作成する
+// Create Table if NOT exists
 $create_query = <<< __SQL__
     CREATE TABLE IF NOT EXISTS items (
         id          INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -16,12 +16,12 @@ $create_query = <<< __SQL__
         price       INTEGER   /* 価格 */
     );
 __SQL__;
-$result = $db->exec($create_query); // SQLを実行
-if ($result === false) { // エラーがあれば表示
+$result = $db->exec($create_query); //exec SQL
+if ($result === false) {
     print_r($db->errorInfo()); exit;
 }
-$db->exec("DELETE FROM items"); // 以前挿入したことがあれば一度初期化
-// データを挿入
+$db->exec("DELETE FROM items");
+//Insert Data
 $idata = array(
     array("name"=>"バナナ", "description"=>"黄色い果物", "price"=>150),
     array("name"=>"イチゴ", "description"=>"赤い果物", "price"=>300),
@@ -30,24 +30,14 @@ $idata = array(
     array("name"=>"タマゴ", "description"=>"高たんぱく", "price"=>210)
 );
 foreach ($idata as $i) {
-    // 挿入する値をクォートする
     $name = $db->quote($i["name"]);
-    $description = $db->quote($i["description"]); // 文字列にクォート('...')を足す
+    $description = $db->quote($i["description"]);
     $price = intval($i["price"]);
     $result = $db->exec(
         "INSERT INTO items (name,description,price)".
-        "VALUES($name, $description, $price)"); // SQLを実行
-    if ($result === FALSE) { // エラーがあれば表示
+        "VALUES($name, $description, $price)");
+    if ($result === FALSE) {
         print_r($db->errorInfo());
     }
 }
-// データを表示
-$stmt = $db->query("SELECT * FROM items");
-while ($row = $stmt->fetch()) {
-    $name = $row["name"];
-    $description = $row["description"];
-    $price = $row["price"];
-    echo " $name ($description) → {$price}円\n";
-}
-
-header("location: /index.php"); exit; // リロードする
+header("location: /index.php"); exit; //reload

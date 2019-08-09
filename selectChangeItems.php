@@ -10,6 +10,11 @@ $stmt = $db->query($sql);
 
 <div class="container">
   <div class="row">
+    <a href="index.php">
+      <button class="btn btn-primary" style="text-decoration: none;">
+        商品情報一覧に戻る
+      </button>
+    </a>
     <span class="col-12">変更を行いたい項目を選択してください。</span>
 <?php
 foreach ($stmt as $row) {

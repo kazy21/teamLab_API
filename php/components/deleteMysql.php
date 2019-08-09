@@ -6,5 +6,5 @@
   $sql = "DELETE FROM items WHERE id = ?";
   $stmt = $db->prepare($sql);
   $stmt->execute(array($_GET["id"]));
-  header("location: /index.php"); exit; // リロードする
+  header("location: /index.php"); exit; //reload
 ?>

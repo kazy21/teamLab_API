@@ -5,6 +5,11 @@
 
 <div class="container">
   <div class="row">
+    <a href="index.php">
+      <button class="btn btn-primary" style="text-decoration: none;">
+        商品情報一覧に戻る
+      </button>
+    </a>
     <form action="/php/components/addMysql.php" method="POST" enctype="multipart/form-data" class="col-12">
       <div class="col-12">
         商品タイトル<br>

@@ -5,6 +5,11 @@
 
 <div class="container">
   <div class="row">
+    <a href="index.php">
+      <button class="btn btn-primary" style="text-decoration: none;">
+        商品情報一覧に戻る
+      </button>
+    </a>
 <?php
   $name = isset($_GET["name"]) ? trim($_GET["name"]) : "";
   $description = isset($_GET["description"]) ? trim($_GET["description"]) : "";
