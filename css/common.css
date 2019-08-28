@@ -1,7 +1,3 @@
-.product-info {
-  border: solid 1px #000;
-}
-
 .product-info .name {
   font-size: 1.5em;
 }
@@ -29,4 +25,16 @@
 
 .btn {
   margin: 5px 0;
+}
+
+.contents {
+    width: 100%;
+    border: solid 1px #000000;
+    margin: 5px 0px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.contents-inside {
+  margin: 0;
 }
